@@ -1,8 +1,8 @@
 import pandas as pd
 import numpy as np
+from statsmodels.stats.proportion import proportions_ztest
 
-
-chat_id = 123456 # Ваш chat ID, не меняйте название переменной
+chat_id = 457863109 # Ваш chat ID, не меняйте название переменной
 
 def solution(x_success: int, 
              x_cnt: int, 
@@ -11,4 +11,6 @@ def solution(x_success: int,
     # Измените код этой функции
     # Это будет вашим решением
     # Не меняйте название функции и её аргументы
-    return ... # Ваш ответ, True или False
+    alpha = 0.06
+    stat, pval = proportions_ztest([y_success, x_success], [y_cnt, x_cnt], alternative='smaller')
+    return pval < alpha # Ваш ответ, True или False
